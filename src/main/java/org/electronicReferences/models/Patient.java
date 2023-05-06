@@ -1,5 +1,6 @@
 package org.electronicReferences.models;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -42,5 +43,8 @@ public class Patient {
     private Sex sex;
 
     private String address;
+
+    @OneToOne
+    private User user;
 
 }
