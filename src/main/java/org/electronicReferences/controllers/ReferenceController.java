@@ -1,7 +1,8 @@
 package org.electronicReferences.controllers;
 
-import org.electronicReferences.dto.ReferenceDTO;
 import org.electronicReferences.services.ReferenceService;
+import org.electronicReferences.dto.ReferenceDTOs.ReferenceCreateDTO;
+import org.electronicReferences.dto.ReferenceDTOs.ReferenceUpdateGetDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,29 +18,28 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/references")
+@RequestMapping("/diagnoses")
 public class ReferenceController {
     private final ReferenceService referenceService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ReferenceDTO addReference(@Valid @RequestBody ReferenceDTO referenceDTO){
-        return referenceService.addReference(referenceDTO);
+    public ReferenceUpdateGetDTO addReference(@Valid @RequestBody ReferenceCreateDTO referenceCreateDTO) {
+        return referenceService.addReference(referenceCreateDTO);
     }
 
     @PutMapping("/{id}")
-    public ReferenceDTO updateReference(@PathVariable Integer id, @RequestBody ReferenceDTO referenceDTO) {
-        return referenceService.updateReference(id, referenceDTO);
+    public ReferenceUpdateGetDTO updateReference(@PathVariable Integer id, @RequestBody ReferenceUpdateGetDTO referenceUpdateGetDTO) {
+        return referenceService.updateReference(id, referenceUpdateGetDTO);
     }
 
     @GetMapping("/{id}")
-    public ReferenceDTO getReferenceById(@PathVariable Integer id) {
+    public ReferenceUpdateGetDTO getReferenceById(@PathVariable Integer id) {
         return referenceService.getReferenceById(id);
     }
 
     @DeleteMapping("/{id}")
     public void deleteReference(@PathVariable Integer id) {
-        referenceService.deleteReferenceById(id);
+        referenceService.deleteReference(id);
     }
 }
-

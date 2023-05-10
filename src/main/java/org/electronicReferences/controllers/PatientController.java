@@ -1,7 +1,8 @@
 package org.electronicReferences.controllers;
 
-import org.electronicReferences.dto.PatientDTO;
 import org.electronicReferences.services.PatientService;
+import org.electronicReferences.dto.PatientDTOs.PatientCreateDTO;
+import org.electronicReferences.dto.PatientDTOs.PatientUpdateGetDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,23 +17,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/patients")
+@RequestMapping("/diagnoses")
 public class PatientController {
     private final PatientService patientService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public PatientDTO addPatient(@Valid @RequestBody PatientDTO patientDTO){
-        return patientService.addPatient(patientDTO);
+    public PatientUpdateGetDTO addPatient(@Valid @RequestBody PatientCreateDTO patientCreateDTO) {
+        return patientService.addPatient(patientCreateDTO);
     }
 
     @PutMapping("/{id}")
-    public PatientDTO updatePatient(@PathVariable Integer id, @RequestBody PatientDTO patientDTO) {
-        return patientService.updatePatient(id, patientDTO);
+    public PatientUpdateGetDTO updatePatient(@PathVariable Integer id, @RequestBody PatientUpdateGetDTO patientUpdateDTO) {
+        return patientService.updatePatient(id, patientUpdateDTO);
     }
 
     @GetMapping("/{id}")
-    public PatientDTO getPatientById(@PathVariable Integer id) {
+    public PatientUpdateGetDTO getPatientById(@PathVariable Integer id) {
         return patientService.getPatientById(id);
     }
+
 }

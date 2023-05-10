@@ -1,7 +1,8 @@
 package org.electronicReferences.controllers;
 
-import org.electronicReferences.dto.DoctorDTO;
 import org.electronicReferences.services.DoctorService;
+import org.electronicReferences.dto.DoctorDTOs.DoctorCreateDTO;
+import org.electronicReferences.dto.DoctorDTOs.DoctorUpdateGetDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,23 +17,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/doctors")
+@RequestMapping("/diagnoses")
 public class DoctorController {
     private final DoctorService doctorService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public DoctorDTO addDoctor(@Valid @RequestBody DoctorDTO doctorDTO){
-        return doctorService.addDoctor(doctorDTO);
+    public DoctorUpdateGetDTO addDoctor(@Valid @RequestBody DoctorCreateDTO doctorCreateDTO) {
+        return doctorService.addDoctor(doctorCreateDTO);
     }
 
     @PutMapping("/{id}")
-    public DoctorDTO updateDoctor(@PathVariable Integer id, @RequestBody DoctorDTO doctorDTO) {
-        return doctorService.updateDoctor(id, doctorDTO);
+    public DoctorUpdateGetDTO updateDoctor(@PathVariable Integer id, @RequestBody DoctorUpdateGetDTO doctorUpdateDTO) {
+        return doctorService.updateDoctor(id, doctorUpdateDTO);
     }
 
     @GetMapping("/{id}")
-    public DoctorDTO getDoctorById(@PathVariable Integer id) {
+    public DoctorUpdateGetDTO getDoctorById(@PathVariable Integer id) {
+
         return doctorService.getDoctorById(id);
     }
+
 }

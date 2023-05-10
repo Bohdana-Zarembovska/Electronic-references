@@ -1,7 +1,9 @@
 package org.electronicReferences.controllers;
 
-import org.electronicReferences.dto.DiagnosisDTO;
 import org.electronicReferences.services.DiagnosisService;
+import org.electronicReferences.dto.DiagnosisDTOs.DiagnosisCreateDTO;
+import org.electronicReferences.dto.DiagnosisDTOs.DiagnosisUpdateDTO;
+import org.electronicReferences.dto.DiagnosisDTOs.DiagnosisGetDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,22 +25,22 @@ public class DiagnosisController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public DiagnosisDTO addDiagnosis(@Valid @RequestBody DiagnosisDTO diagnosisDTO){
-        return diagnosisService.addDiagnosis(diagnosisDTO);
+    public DiagnosisGetDTO addDiagnosis(@Valid @RequestBody DiagnosisCreateDTO diagnosisCreateDTO) {
+        return diagnosisService.addDiagnosis(diagnosisCreateDTO);
     }
 
     @PutMapping("/{id}")
-    public DiagnosisDTO updateDiagnosis(@PathVariable Integer id, @RequestBody DiagnosisDTO diagnosisDTO) {
-        return diagnosisService.updateDiagnosis(id, diagnosisDTO);
+    public DiagnosisGetDTO updateDiagnosis(@PathVariable Integer id, @RequestBody DiagnosisUpdateDTO diagnosisUpdateDTO) {
+        return diagnosisService.updateDiagnosis(id, diagnosisUpdateDTO);
     }
 
     @GetMapping("/{id}")
-    public DiagnosisDTO getDiagnosisById(@PathVariable Integer id) {
+    public DiagnosisGetDTO getDiagnosisById(@PathVariable Integer id) {
         return diagnosisService.getDiagnosisById(id);
     }
 
     @DeleteMapping("/{id}")
     public void deleteDiagnosis(@PathVariable Integer id) {
-        diagnosisService.deleteDiagnosisById(id);
+        diagnosisService.deleteDiagnosis(id);
     }
 }

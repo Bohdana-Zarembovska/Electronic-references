@@ -1,6 +1,8 @@
 package org.electronicReferences.controllers;
 
-import org.electronicReferences.dto.UserDTO;
+
+import org.electronicReferences.dto.UserDTOs.UserCreateDTO;
+import org.electronicReferences.dto.UserDTOs.UserUpdateGetDTO;
 import org.electronicReferences.services.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -26,17 +28,17 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDTO addUser(@Valid @RequestBody UserDTO userDTO){
-        return userService.addUser(userDTO);
+    public UserUpdateGetDTO addUser(@Valid @RequestBody UserCreateDTO userCreateDTO) {
+        return userService.addUser(userCreateDTO);
     }
 
     @PutMapping("/{id}")
-    public UserDTO updateUser(@PathVariable Integer id, @RequestBody UserDTO userDTO) {
-        return userService.updateUser(id, userDTO);
+    public UserUpdateGetDTO updateUser(@PathVariable Integer id, @RequestBody UserUpdateGetDTO userUpdateDTO) {
+        return userService.updateUser(id, userUpdateDTO);
     }
 
     @GetMapping
-    public Page<UserDTO> searchUser(
+    public Page<UserUpdateGetDTO> searchUserByName(
             @RequestParam(value = "name", required = false) String name,
             @PageableDefault Pageable pageable
     ){
@@ -44,7 +46,9 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public UserDTO getUserById(@PathVariable Integer id) {
+    public UserUpdateGetDTO getUserById(@PathVariable Integer id) {
+
         return userService.getUserById(id);
     }
+
 }
