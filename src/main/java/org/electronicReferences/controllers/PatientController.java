@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/diagnoses")
+@RequestMapping("/patients")
 public class PatientController {
     private final PatientService patientService;
 

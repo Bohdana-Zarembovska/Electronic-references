@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/diagnoses")
+@RequestMapping("/references")
 public class ReferenceController {
     private final ReferenceService referenceService;
 

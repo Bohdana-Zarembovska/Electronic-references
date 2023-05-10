@@ -10,12 +10,8 @@ m
 =src/main/java/org/electronicReferences/Patient/BloodType.java,1\3\134a0e751f0b5209644ef2447c21b4c56b03ecb5
 l
 <src/main/java/org/electronicReferences/models/Diagnosis.java,5\f\5ffd4a1799b7a9fd6235a5c8f2503bb45c9bdfed
-€
-Psrc/main/java/org/electronicReferences/dto/DiagnosisDTOs/DiagnosisDeleteDTO.java,f\8\f80dabf6dfbf44c0777ad27dda2cc5c866f095fb
 |
 Lsrc/main/java/org/electronicReferences/repositories/DiagnosisRepository.java,3\4\3400a22ce6aac077ff492ed8148d55ab1cc6c4b5
-i
-9src/main/java/org/electronicReferences/dto/DoctorDTO.java,e\6\e67363332c718e1f0c70404a7e566a7a2ce64df6
 }
 Msrc/main/java/org/electronicReferences/dto/DoctorDTOs/DoctorUpdateGetDTO.java,6\1\6139aa001de00a1d75c9319105fc4cc6151674ad
 z
@@ -28,8 +24,6 @@ q
 Asrc/main/java/org/electronicReferences/mappers/PatientMapper.java,a\2\a294e384cd6c62dcb9b0250550b03bdf10b3554a
 s
 Csrc/main/java/org/electronicReferences/services/PatientService.java,5\7\57095fa54156f8ab88d0f6cd72caafcbfd1a864f
-y
-Isrc/main/java/org/electronicReferences/controllers/PatientController.java,a\e\ae7df2b650d4119daaab415087217391905416a2
 s
 Csrc/main/java/org/electronicReferences/mappers/DiagnosisMapper.java,3\f\3f1d138d1e3269b0d1f3123e5a2836e55ebcdd7b
 s
@@ -46,10 +40,6 @@ Psrc/main/java/org/electronicReferences/dto/DiagnosisDTOs/DiagnosisUpdateDTO.jav
 Psrc/main/java/org/electronicReferences/dto/ReferenceDTOs/ReferenceCreateDTO.java,6\6\662463d2311731f1224bbe973a83239b77c39144
 ƒ
 Ssrc/main/java/org/electronicReferences/dto/ReferenceDTOs/ReferenceUpdateGetDTO.java,8\d\8d8ce38f8a33be2138429a372c8c29897bb740c9
-{
-Ksrc/main/java/org/electronicReferences/controllers/DiagnosisController.java,f\3\f3eb950111b860a000a9f61fc1647987368336d4
-{
-Ksrc/main/java/org/electronicReferences/controllers/ReferenceController.java,b\0\b099c41b7f2c0e4c744af4f73a941b392d47d1a2
 y
 Isrc/main/java/org/electronicReferences/dto/UserDTOs/UserUpdateGetDTO.java,5\9\598dde5d8b1f699a8da8c0ee4ad828940205332f
 p
@@ -58,10 +48,6 @@ n
 >src/main/java/org/electronicReferences/mappers/UserMapper.java,d\0\d0165dcd40b7e3d82d01d7a7ee57ce48b99f9007
 p
 @src/main/java/org/electronicReferences/services/UserService.java,2\8\28ec1a9136a438f9ee07f1fb7339db7ccbb5f62a
-x
-Hsrc/main/java/org/electronicReferences/controllers/DoctorController.java,f\9\f9a44bd6ccb1102fc6d96d305e5b5d38fef9673e
-v
-Fsrc/main/java/org/electronicReferences/controllers/UserController.java,e\6\e6f995872cb557b90a4484afb3cb8f1f9361fb11
 z
 Jsrc/main/java/org/electronicReferences/ElectronicReferenceApplication.java,4\9\4931a4b103da0a938c0842cfefbc03ea7cf9a0f4
 r
@@ -72,3 +58,13 @@ Esrc/main/java/org/electronicReferences/services/DiagnosisService.java,a\4\a479
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 v
 Fsrc/main/java/org/electronicReferences/dto/UserDTOs/UserCreateDTO.java,3\e\3ed4c9b1eb6d34a56615635da4147dcbd785cd32
+{
+Ksrc/main/java/org/electronicReferences/controllers/DiagnosisController.java,f\3\f3eb950111b860a000a9f61fc1647987368336d4
+x
+Hsrc/main/java/org/electronicReferences/controllers/DoctorController.java,f\9\f9a44bd6ccb1102fc6d96d305e5b5d38fef9673e
+y
+Isrc/main/java/org/electronicReferences/controllers/PatientController.java,a\e\ae7df2b650d4119daaab415087217391905416a2
+{
+Ksrc/main/java/org/electronicReferences/controllers/ReferenceController.java,b\0\b099c41b7f2c0e4c744af4f73a941b392d47d1a2
+v
+Fsrc/main/java/org/electronicReferences/controllers/UserController.java,e\6\e6f995872cb557b90a4484afb3cb8f1f9361fb11
