@@ -38,7 +38,7 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, optional = false)
     private Doctor doctor;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
