@@ -17,6 +17,7 @@ public class PatientService {
     private final PatientCreateDTO patientCreateDTO;
     private final PatientUpdateGetDTO patientUpdateGetDTO;
 
+    private static final String PATIENT_MESSAGE = "Patient with ID %d is not found";
     public PatientUpdateGetDTO addPatient(PatientCreateDTO patientCreateDTO) {
         Patient patient = patientMapper.toEntity(patientCreateDTO);
         Patient savedPatient = patientRepository.save(patient);
@@ -25,7 +26,7 @@ public class PatientService {
 
     public PatientUpdateGetDTO updatePatient(Integer id, PatientUpdateGetDTO patientUpdateGetDTO) {
         Patient patient = patientRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("patient with this id is not found"));
+                .orElseThrow(() -> new EntityNotFoundException(String.format(PATIENT_MESSAGE, id)));
 
         patientMapper.updatePatientFromDTO(patientUpdateGetDTO, patient);
         return patientMapper.toDTO(patientRepository.save(patient));
@@ -33,7 +34,7 @@ public class PatientService {
 
     public PatientUpdateGetDTO getPatientById(Integer patientId) {
         Patient patient = patientRepository.findById(patientId)
-                .orElseThrow(() -> new EntityNotFoundException("patient with this id is not found"));
+                .orElseThrow(() -> new EntityNotFoundException(String.format(PATIENT_MESSAGE, patientId)));
         return patientMapper.toDTO(patient);
     }
 

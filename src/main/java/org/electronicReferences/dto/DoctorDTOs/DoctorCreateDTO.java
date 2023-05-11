@@ -10,6 +10,6 @@ public class DoctorCreateDTO {
     @NotBlank(message = "Specification type must be specified")
     private String specification;
 
-    @NotBlank(message = "Hospital name of birth must be specified")
+    @NotBlank(message = "Hospital name must be specified")
     private String hospitalName;
 }

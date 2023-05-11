@@ -23,6 +23,7 @@ public class UserService {
     private final UserCreateDTO userCreateDTO;
     private final UserUpdateGetDTO userUpdateGetDTO;
 
+    private static final String USER_MESSAGE = "User with ID %d is not found";
     public UserUpdateGetDTO addUser(UserCreateDTO userCreateDTO) {
         User user = userMapper.toEntity(userCreateDTO);
         User savedUser = userRepository.save(user);
@@ -31,7 +32,7 @@ public class UserService {
 
     public UserUpdateGetDTO updateUser(Integer id, UserUpdateGetDTO userUpdateGetDTO) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("user with this id is not found"));
+                .orElseThrow(() -> new EntityNotFoundException(String.format(USER_MESSAGE, id)));
 
         userMapper.updateUserFromDTO(userUpdateGetDTO, user);
         return userMapper.toDTO(userRepository.save(user));
@@ -39,7 +40,7 @@ public class UserService {
 
     public UserUpdateGetDTO getUserById(Integer userId) {
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new EntityNotFoundException("user with this id is not found"));
+                .orElseThrow(() -> new EntityNotFoundException(String.format(USER_MESSAGE, userId)));
         return userMapper.toDTO(user);
     }
 

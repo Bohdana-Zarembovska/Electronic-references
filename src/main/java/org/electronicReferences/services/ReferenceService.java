@@ -17,6 +17,7 @@ public class ReferenceService {
     private final ReferenceCreateDTO referenceCreateDTO;
     private final ReferenceUpdateGetDTO referenceUpdateGetDTO;
 
+    private static final String REFERENCE_MESSAGE = "Reference with ID %d is not found";
     public ReferenceUpdateGetDTO addReference(ReferenceCreateDTO referenceCreateDTO) {
         Reference reference = referenceMapper.toEntity(referenceCreateDTO);
         Reference savedReference = referenceRepository.save(reference);
@@ -25,7 +26,7 @@ public class ReferenceService {
 
     public ReferenceUpdateGetDTO updateReference(Integer id, ReferenceUpdateGetDTO referenceUpdateGetDTO) {
         Reference reference = referenceRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("reference with this id is not found"));
+                .orElseThrow(() -> new EntityNotFoundException(String.format(REFERENCE_MESSAGE, id)));
 
         referenceMapper.updateReferenceFromDTO(referenceUpdateGetDTO,reference);
         return referenceMapper.toDTO(referenceRepository.save(reference));
@@ -33,7 +34,7 @@ public class ReferenceService {
 
     public ReferenceUpdateGetDTO getReferenceById(Integer referenceId) {
         Reference reference = referenceRepository.findById(referenceId)
-                .orElseThrow(() -> new EntityNotFoundException("reference with this id is not found"));
+                .orElseThrow(() -> new EntityNotFoundException(String.format(REFERENCE_MESSAGE, referenceId)));
         return referenceMapper.toDTO(reference);
     }
 

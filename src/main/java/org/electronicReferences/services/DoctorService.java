@@ -17,6 +17,7 @@ public class DoctorService {
     private final DoctorCreateDTO doctorCreateDTO;
     private final DoctorUpdateGetDTO doctorUpdateGetDTO;
 
+    private static final String DOCTOR_MESSAGE = "Doctor with ID %d is not found";
     public DoctorUpdateGetDTO addDoctor(DoctorCreateDTO doctorCreateDTO) {
         Doctor doctor = doctorMapper.toEntity(doctorCreateDTO);
         Doctor savedDoctor = doctorRepository.save(doctor);
@@ -25,7 +26,7 @@ public class DoctorService {
 
     public DoctorUpdateGetDTO updateDoctor(Integer id, DoctorUpdateGetDTO doctorUpdateGetDTO) {
         Doctor doctor = doctorRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("doctor with this id is not found"));
+                .orElseThrow(() -> new EntityNotFoundException(String.format(DOCTOR_MESSAGE, id)));
 
         doctorMapper.updateDoctorFromDTO(doctorUpdateGetDTO, doctor);
         return doctorMapper.toDTO(doctorRepository.save(doctor));
@@ -33,7 +34,7 @@ public class DoctorService {
 
     public DoctorUpdateGetDTO getDoctorById(Integer doctorId) {
         Doctor doctor = doctorRepository.findById(doctorId)
-                .orElseThrow(() -> new EntityNotFoundException("doctor with this id is not found"));
+                .orElseThrow(() -> new EntityNotFoundException(String.format(DOCTOR_MESSAGE, doctorId)));
         return doctorMapper.toDTO(doctor);
     }
 

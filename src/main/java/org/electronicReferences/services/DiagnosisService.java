@@ -18,7 +18,7 @@ public class DiagnosisService {
     private final DiagnosisCreateDTO diagnosisCreateDTO;
     private final DiagnosisUpdateDTO diagnosisUpdateDTO;
     private final DiagnosisGetDTO diagnosisGetDTO;
-
+    private static final String DIAGNOSIS_MESSAGE = "Diagnosis with ID %d is not found";
     public DiagnosisGetDTO addDiagnosis(DiagnosisCreateDTO diagnosisCreateDTO) {
         Diagnosis diagnosis = diagnosisMapper.toEntity(diagnosisCreateDTO);
         Diagnosis savedDiagnosis = diagnosisRepository.save(diagnosis);
@@ -27,7 +27,7 @@ public class DiagnosisService {
 
     public DiagnosisGetDTO updateDiagnosis(Integer id, DiagnosisUpdateDTO diagnosisUpdateDTO) {
         Diagnosis diagnosis = diagnosisRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("diagnosis with this id is not found"));
+                .orElseThrow(() -> new EntityNotFoundException(String.format(DIAGNOSIS_MESSAGE, id)));
 
         diagnosisMapper.updateDiagnosisFromDTO(diagnosisUpdateDTO, diagnosis);
         return diagnosisMapper.toDTO(diagnosisRepository.save(diagnosis));
@@ -35,7 +35,7 @@ public class DiagnosisService {
 
     public DiagnosisGetDTO getDiagnosisById(Integer diagnosisId) {
         Diagnosis diagnosis = diagnosisRepository.findById(diagnosisId)
-                .orElseThrow(() -> new EntityNotFoundException("diagnosis with this id is not found"));
+                .orElseThrow(() -> new EntityNotFoundException(String.format(DIAGNOSIS_MESSAGE, diagnosisId)));
         return diagnosisMapper.toDTO(diagnosis);
     }
 
